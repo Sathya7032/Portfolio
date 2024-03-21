@@ -1,0 +1,53 @@
+{% extends "base.html" %} 
+{% load static %}
+
+{% block title %} Projects {% endblock title %} 
+
+{% block body %}
+<main id="main" class="border border-dark rounded-5 bg-light">
+  <section>
+    <h1 class="text-center rounded-2 text-white p-3 bg-dark">My Projects</h1>
+    {% for projects in projects %}
+      
+    
+    <div class="container border-black">
+      <h2 class="text-center rounded-5 text-white p-2 bg-primary">
+        {{projects.name}}
+      </h2>
+      <div class="card mb-3">
+        <img
+          src="/media/{{projects.image}}"
+          class="card-img-top rounded-3"
+          alt="Wild Landscape"
+        />
+        <div class="card-body">
+          <h5 class="card-title text-center h2 text-danger">
+            {{projects.name}}
+          </h5>
+          <br />
+          <p class="card-text text-primary">
+              {{projects.details|safe}}    
+          </p>
+          <p class="card-text">
+            <small class="text-muted">Updated on 20-07-2023 </small>
+          </p>
+        </div>
+        <div class="card text-center text-primary bg-dark">
+          <div class="card-body">
+            <h5>Access code from my below github link</h5>
+            <a href={{projects.links}} target="_blank"
+              ><button class="btn btn-primary">source code</button></a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+       <hr class="border-top-1">
+    <br>
+    {% endfor %}
+
+  </section>
+</main>
+{% endblock body %}
